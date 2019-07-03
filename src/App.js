@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Welcome from './welcome';
 import Clock from './clock';
+import List from './list';
 
 function App() {
   return (
@@ -20,9 +21,11 @@ function App() {
         >
           Learn React
         </a>
-        <Welcome name='Yury' />
+        <Welcome name='Yury'>Taratov</Welcome>
         <hr />
         <Clock />
+        <hr />
+        <List />
       </header>
     </div>
   );

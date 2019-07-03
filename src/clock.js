@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 
-export default class Clock extends Component {
+export default class Clock extends PureComponent {
     // constructor() {
     //     super();
     //     this.state = {
