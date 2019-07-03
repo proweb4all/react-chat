@@ -1,6 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Welcome from './welcome';
+import Clock from './clock';
 
 function App() {
   return (
@@ -18,6 +20,9 @@ function App() {
         >
           Learn React
         </a>
+        <Welcome name='Yury' />
+        <hr />
+        <Clock />
       </header>
     </div>
   );
