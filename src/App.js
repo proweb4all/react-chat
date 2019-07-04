@@ -15,38 +15,20 @@ import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import Paper from '@material-ui/core/Paper';
 import Input from '@material-ui/core/Input';
-//import {Theme} from '@material-ui/core';
+//import theme from './themes/default';
 
-// import Drawer from 'material-ui/Drawer';
-// import AppBar from 'material-ui/AppBar';
-// import Toolbar from 'material-ui/Toolbar';
-// import Typography from 'material-ui/Typography';
-// import Divider from 'material-ui/Divider';
-// import TextField from 'material-ui/TextField';
-// import List, { ListItem, ListItemText } from 'material-ui/List';
-// import Avatar from 'material-ui/Avatar';
-// import Button from 'material-ui/Button';
-// import BottomNavigation, { BottomNavigationAction } from 'material-ui/BottomNavigation';
-// import Paper from 'material-ui/Paper';
-// import Input from 'material-ui/Input';
-
-// import RestoreIcon from 'material-ui-icons/Restore';
-// import ExploreIcon from 'material-ui-icons/Explore';
-// import AddIcon from 'material-ui-icons/Add';
 import { Add, Alarm, Explore } from '@material-ui/icons';
 
 import { chats, messages } from './mock-data';
-import { makeStyles, createStyles } from '@material-ui/styles';
-import { useTheme } from '@material-ui/styles';
 
-
+//console.log(theme);
 const styles = () => ({
   root: {
     position: 'relative',
     display: 'flex',
     width: '100%',
     height: '100%',
-    //backgroundColor: theme.palette.background.red,
+    //backgroundColor: theme.palette.primary.main,
     //backgroundColor: theme.backgroundColor,
     //backgroundColor: 'white',
   },
@@ -65,6 +47,9 @@ const styles = () => ({
     // paddingRight: theme.spacing.unit * 3,
     paddingLeft: '15px',
     paddingRight: '15px',
+  },
+  chatItem: {
+    paddingLeft: '15px',
   },
   chatsList: {
     height: 'calc(100% - 56px)',
@@ -142,7 +127,7 @@ class App extends React.Component {
         <AppBar color="primary" className={classes.appBar}>
           <Toolbar>
             <Typography variant="title" color="inherit" noWrap>
-              DogeCodes React Chat
+              ProWeb4All React Chat
             </Typography>
           </Toolbar>
         </AppBar>
@@ -164,7 +149,7 @@ class App extends React.Component {
             {chats.map((chat, index) => (
               <ListItem key={index} button>
                 <Avatar>{chat.title && chat.title[0]}</Avatar>
-                <ListItemText primary={chat.title}/>
+                <ListItemText className={classes.chatItem} primary={chat.title}/>
               </ListItem>
             ))}
           </List>
