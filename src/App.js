@@ -15,6 +15,7 @@ import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import Paper from '@material-ui/core/Paper';
 import Input from '@material-ui/core/Input';
+//import {Theme} from '@material-ui/core';
 
 // import Drawer from 'material-ui/Drawer';
 // import AppBar from 'material-ui/AppBar';
@@ -35,15 +36,19 @@ import Input from '@material-ui/core/Input';
 import { Add, Alarm, Explore } from '@material-ui/icons';
 
 import { chats, messages } from './mock-data';
+import { makeStyles, createStyles } from '@material-ui/styles';
+import { useTheme } from '@material-ui/styles';
 
-const styles = theme => ({
+
+const styles = () => ({
   root: {
     position: 'relative',
     display: 'flex',
     width: '100%',
     height: '100%',
-    // backgroundColor: theme.palette.background.default,
-    backgroundColor: 'white',
+    //backgroundColor: theme.palette.background.red,
+    //backgroundColor: theme.backgroundColor,
+    //backgroundColor: 'white',
   },
   appBar: {
     position: 'fixed',
@@ -52,12 +57,14 @@ const styles = theme => ({
   drawerPaper: {
     position: 'relative',
     height: '100%',
-    width: 320,
+    width: '320px',
   },
   drawerHeader: {
     //...theme.mixins.toolbar,
-    //paddingLeft: theme.spacing.unit * 3,
-    //paddingRight: theme.spacing.unit * 3,
+    // paddingLeft: theme.spacing.unit * 3,
+    // paddingRight: theme.spacing.unit * 3,
+    paddingLeft: '15px',
+    paddingRight: '15px',
   },
   chatsList: {
     height: 'calc(100% - 56px)',
@@ -68,6 +75,8 @@ const styles = theme => ({
     left: 'auto',
     //right: theme.spacing.unit * 3,
     //bottom: theme.spacing.unit * 3 + 48, // + bottom navigation
+    right: '15px',
+    bottom: '64px', // + bottom navigation
   },
   chatLayout: {
     display: 'flex',
@@ -82,6 +91,7 @@ const styles = theme => ({
     height: '100%',
     width: '100%',
     //paddingTop: theme.spacing.unit * 3,
+    paddingTop: '15px',
     paddingBottom: '120px',
   },
   messageInputWrapper: {
@@ -91,6 +101,7 @@ const styles = theme => ({
     bottom: 0,
     width: `calc(100% - 320px)`,
     //padding: theme.spacing.unit * 3,
+    padding: '15px',
   },
   messageInput: {
     //padding: theme.spacing.unit * 2,
@@ -100,6 +111,7 @@ const styles = theme => ({
     justifyContent: 'flex-start',
     alignItems: 'center',
     //padding: `${theme.spacing.unit}px ${theme.spacing.unit * 3}px`,
+    padding: '5px 15px',
   },
   messageWrappperFromMe: {
     justifyContent: 'flex-end',
@@ -108,10 +120,13 @@ const styles = theme => ({
     maxWidth: '70%',
     minWidth: '10%',
     //padding: theme.spacing.unit,
+    padding: '5px',
     //marginLeft: theme.spacing.unit * 2,
+    marginLeft: '10px',
   },
   messageFromMe: {
     //marginRight: theme.spacing.unit * 2,
+    marginRight: '10px',
     backgroundColor: '#e6dcff'
   },
 });
@@ -119,10 +134,11 @@ const styles = theme => ({
 class App extends React.Component {
   render() {
     const { classes } = this.props;
-    console.log(theme);
+    //console.log(theme);
 
     return (
       <div className={classes.root}>
+        {/* {printTheme} */}
         <AppBar color="primary" className={classes.appBar}>
           <Toolbar>
             <Typography variant="title" color="inherit" noWrap>
