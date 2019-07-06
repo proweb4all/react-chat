@@ -1,4 +1,5 @@
 import React from 'react';
+import fetch from 'isomorphic-fetch';
 import { withStyles } from '@material-ui/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -21,22 +22,13 @@ class LoginForm extends React.Component {
     },
   }
 
-  handleUsernameInputChange = (event) => {
+  handleInputChange = (event) => {
     event.persist();
+    const { name, value } = event.target;
     this.setState((prevState) => ({
-      username: {
-        ...prevState.username,
-        value: event.target.value,
-      },
-    }));
-  }
-
-  handlePasswordInputChange = (event) => {
-    event.persist();
-    this.setState((prevState) => ({
-      password: {
-        ...prevState.password,
-        value: event.target.value,
+      [name]: {
+        ...prevState[name],
+        value,
       },
     }));
   }
@@ -48,7 +40,20 @@ class LoginForm extends React.Component {
 
     console.log('Login:', username.value, password.value);
 
-    // ...
+    fetch('http://localhost:8000/v1/login', {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: username.value,
+        password: password.value,
+      }),
+    })
+    .then(response => response.json())
+    .then(json => console.log('json', json))
+    .catch(reason => console.error(reason))
   }
 
   render() {
@@ -61,24 +66,26 @@ class LoginForm extends React.Component {
           required
           fullWidth
           label="Username"
+          name="username"
           placeholder="Type your username..."
           type="text"
           margin="normal"
           autoComplete="username"
           value={username.value}
-          onChange={this.handleUsernameInputChange}
+          onChange={this.handleInputChange}
           error={!username.isValid}
         />
         <TextField
           required
           fullWidth
           label="Password"
-          placeholder="Type your username..."
+          name="password"
+          placeholder="Type your password..."
           type="password"
           margin="normal"
           autoComplete="current-password"
           value={password.value}
-          onChange={this.handlePasswordInputChange}
+          onChange={this.handleInputChange}
           error={!password.isValid}
         />
         <Button

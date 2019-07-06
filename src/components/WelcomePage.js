@@ -11,12 +11,16 @@ import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
 
 const styles = () => ({
+  
   paper: {
     marginTop: '80px',
     width: '500px',
   },
   tabContent: {
     padding: '15px',
+  },
+  tabFofm: {
+    width: '50%',
   }
 })
 
@@ -38,7 +42,7 @@ class WelcomePage extends React.Component {
         <AppBar>
           <Toolbar>
             <Typography variant="title" color="inherit" style={{ flex: 1 }}>
-              DogeCodes React Chat
+              ProWeb4All React Chat
             </Typography>
           </Toolbar>
         </AppBar>
@@ -51,8 +55,8 @@ class WelcomePage extends React.Component {
                   onChange={this.handleTabChage}
                   fullWidth
                 >
-                  <Tab label="Login" />
-                  <Tab label="Sign Up" />
+                  <Tab className={classes.tabFofm} label="Login" />
+                  <Tab className={classes.tabFofm} label="Sign Up" />
                 </Tabs>
               </AppBar>
               <div className={classes.tabContent}>
